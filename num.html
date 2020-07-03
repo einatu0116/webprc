@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/mor.css">
+  <script src="layui/layui.js"></script>
+  <script src="js/mor.js"></script>
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/vidbg.js"></script>
+</head>
+<body style="background-image:url(img/ico/bg-loading.gif);padding-top:150px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none; user-select:none;">
+
+
+
+<!--  <table>-->
+<!--    <tr>-->
+<!--      <td><input style="width: 100%" id="level" oninput = "value=value.replace(/[^\d]/g,'')" maxlength="6"></td>-->
+<!--      <td>-->
+<!--        <select id="ch" style="font-size: 14px;width: 100%" >-->
+<!--          <option value="1">伤害</option>-->
+<!--          <option value="2">暴击</option>-->
+<!--          <option value="3">回魔</option>-->
+<!--          <option value="4">削魔</option>-->
+<!--          <option value="5">恢复</option>-->
+<!--          <option value="6">异常</option>-->
+<!--        </select>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td colspan="2">-->
+<!--        <select id="rw" style="font-size: 14px;width: 100%" size="10" >-->
+<!--          <option value="1009">中二</option>-->
+<!--          <option value="1010">真步</option>-->
+<!--          <option value="1011">妹弓</option>-->
+<!--          <option value="1012">星法</option>-->
+<!--          <option value="1014">霞</option>-->
+<!--          <option value="1018">老师</option>-->
+<!--          <option value="1028">咲恋</option>-->
+<!--          <option value="1029">望</option>-->
+<!--          <option value="1030">扇子</option>-->
+<!--          <option value="1032">哈哈剑</option>-->
+<!--          <option value="1036">xcw</option>-->
+<!--          <option value="1043">狼</option>-->
+<!--          <option value="1044">yly</option>-->
+<!--          <option value="1047">黑骑</option>-->
+<!--          <option value="1049">姐姐</option>-->
+<!--          <option value="1053">莫妮卡</option>-->
+<!--          <option value="1056">大姐</option>-->
+<!--          <option value="1057">吉他</option>-->
+<!--          <option value="1061">511</option>-->
+<!--          <option value="1063">亚丽莎</option>-->
+<!--          <option value="1065">龙拳</option>-->
+<!--          <option value="1066">梨老八</option>-->
+<!--          <option value="1070">nnk</option>-->
+<!--          <option value="1071">克总</option>-->
+<!--          <option value="1075">水吃</option>-->
+<!--          <option value="1077">水女仆</option>-->
+<!--          <option value="1078">水黑</option>-->
+<!--          <option value="1079">水猫剑</option>-->
+<!--          <option value="1081">万圣刃</option>-->
+<!--          <option value="1083">万圣大眼</option>-->
+<!--          <option value="1087">春虎</option>-->
+<!--          <option value="1088">春田</option>-->
+<!--          <option value="1091">情姐</option>-->
+<!--          <option value="1092">安</option>-->
+<!--          <option value="1094">古蕾雅</option>-->
+<!--          <option value="1095">江户M</option>-->
+<!--          <option value="1096">江户扇</option>-->
+<!--          <option value="1097">雷姆</option>-->
+<!--          <option value="1099">amly</option>-->
+<!--          <option value="1108">克洛伊</option>-->
+<!--          <option value="1111">猫仓</option>-->
+<!--          <option value="1113">天兔</option>-->
+<!--          <option value="1114">露娜</option>-->
+<!--          <option value="1115">圣克</option>-->
+<!--          <option value="1117">圣伊</option>-->
+<!--          <option value="1119">春妈</option>-->
+<!--          <option value="1120">春黑</option>-->
+<!--          <option value="1122">魔霞</option>-->
+<!--          <option value="1124">卯月</option>-->
+<!--          <option value="1125">凛</option>-->
+<!--          <option value="1127">骑松鼠</option>-->
+<!--          <option value="1128">骑牛</option>-->
+<!--          <option value="1129">爽弓</option>-->
+<!--          <option value="1804">命吃</option>-->
+<!--          <option value="1805">蝶妈</option>-->
+<!--        </select>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  </table>-->
+<!--*******************************-->
+
+<div id="hb">
+<section id="section-second" class="full abs"></section>
+<!--<div id="back"></div>-->
+  <div id="ui" class="full abs">
+    <div id="menu">
+      <table><tr>
+        <td id="m_new"><img src="img/ico/n000.png"></td>
+        <td id="m_house"><img src="img/ico/h000.png"></td>
+        <td id="m_bull"><img src="img/ico/z000.png"></td>
+        <td id="m_cha"><img src="img/ico/t000.png"></td>
+        <td id="m_save"><img src="img/ico/s000.png"></td>
+        <td id="m_load"><img src="img/ico/l000.png"></td>
+      </tr></table>
+    </div>
+  </div>
+  <div id='bulletin' class='full abs hid layui-row'></div>
+  <div id="qua" class="hid abs"></div>
+  <video id="zm" class="full abs hid" autoplay="autoplay"><source type="video/mp4"></video>
+  <video id="ckaime" class="full abs hid" autoplay="autoplay"><source type="video/mp4"></video>
+  <div id="curta" class="full abs hid"><div class="full"></div><div class="full abs"></div><div class="full abs"></div></div>
+  <div class="name hid">
+    <table class="nametext img"><tr><td colspan="3" valign="middle" align="center" ><span></span></td></tr></table>
+    <div id="star"><table><tr><td></td><td></td><td></td></tr></table></div>
+    <table class='mzs'>
+      <tr><td rowspan="2"><div class='mzs_l'></div><img src='img/zms_s.png'></td>
+          <td class="mzstxt" data-text='女神的秘石×'>女神的秘石×</td></tr>
+      <tr><td class="mzstxt" data-text='GET' align="left">GET</td></tr>
+    </table>
+  </div>
+  <div id="zmnew" class="hid">
+  <div id='zmback' class='full abs'></div>
+  <table id='zmtable' class='full abs'><tr><td  align="center" valign="bottom"><div id="zmnewbox" class="layui-row"></div></td></tr>
+  <tr><td align="center" valign="top"><div id="zmbutt">OK</div></td></tr>
+  </table>
+
+  </div>
+</div>
+
+<table id="shade" class="hid"><tr>
+  <td id="shademian"  align="center" valign="middle" >
+    <div id='box'>
+      <div id='title'>角色编制</div>
+      <div id='team'>
+        <div id='teambox' >
+          <div id='teamboxsc' class='layui-row'></div><div id='scroll'></div><div id='scroll_a'></div>
+        </div>
+      </div>
+      <div id='databm' class="layui-row">
+        <div id="datapt" class="layui-col-xs4">
+          <div class="full abs"></div>
+          <table id="cardstar" class="layui-col-xs7"><tr><td></td><td></td><td></td><td></td><td></td></tr></table>
+
+          <h1  id="cardlvl" class="layui-col-xs4 txt"></h1>
+        </div>
+        <div id="datamb" class="layui-col-xs4" >
+          <div class="layui-col-xs9">
+            <table id="datamenu" class="hid">
+              <th><td id="datame1" class="datame" style="border-radius: 150px 0px 0px 150px">能力</td><td class="datame">技能</td><td class="datame">装备</td><td style="border-radius: 0px 150px 150px 0px" class="datame">才能开花</td></th>
+            </table>
+          </div>
+          <div class="layui-col-xs3"><div id="boxbutt">OK</div></div>
+        </div>
+      </div>
+    </div>
+  </td></tr></table>
+<audio  autoplay="autoplay"  loop="loop" id="bgm"> </audio>
+<audio autoplay="autoplay" id="cardauto"> </audio>
+</body>
+
+
+</html>
