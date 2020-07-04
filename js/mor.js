@@ -29,6 +29,7 @@ layui.use(['layer','jquery'], function(){
         { "name" : "优花梨" , "id" : 1034,"star":2,"zm":false,"lvl":1,"pos":120,"hp":85,"mp":40,"mph":5,"atk":59,"def":85,"spe":17,"stk":5,"sef":93 },
         { "name" : "栞" , "id" : 1038,"star":2,"zm":false,"lvl":1,"pos":120,"hp":24,"mp":40,"mph":5,"atk":80,"def":31,"spe":97,"stk":0,"sef":53 },
         { "name" : "碧" , "id" : 1040,"star":2,"zm":false,"lvl":1,"pos":120,"hp":45,"mp":40,"mph":5,"atk":67,"def":73,"spe":65,"stk":0,"sef":64 },
+
         { "name" : "千歌" , "id" : 1042,"star":2,"zm":false,"lvl":1,"pos":120,"hp":45,"mp":43,"mph":5,"atk":0,"def":65,"spe":66,"stk":76,"sef":84 },
         { "name" : "空花" , "id" : 1045,"star":2,"zm":false,"lvl":1,"pos":120,"hp":92,"mp":40,"mph":5,"atk":45,"def":87,"spe":10,"stk":40,"sef":99 },
         { "name" : "珠希" , "id" : 1046,"star":2,"zm":false,"lvl":1,"pos":120,"hp":55,"mp":40,"mph":5,"atk":76,"def":44,"spe":82,"stk":0,"sef":40 },
