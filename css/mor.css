@@ -1,7 +1,19 @@
 *{
     margin: 0;
     padding: 0%;
+   font-family: 微软雅黑;
 }
+
+
+@font-face {
+    font-family:ht;
+    src: url('ht.ttf');
+}
+@font-face {
+    font-family:loli;
+    src: url('Roboto-Regular.ttf');
+}
+
 
 /*3星文本框远到近*/
 @keyframes fade-in {
@@ -132,7 +144,8 @@
     position: absolute;
     top: 0px;left: 7px;
     z-index: 1;
-    height: 30px;color: #272727b8;line-height:30px;font-weight: 600;font-size: 16px}
+    font-family: ht;
+    height: 30px;color:#212020de;line-height:30px;font-weight: 600;font-size: 16px}
 
 #databm{width: 1220px;height: 215px}
 #datapt{width: 430px;height: 215px;background-position: center;background-size: 97.5%;background-repeat: no-repeat;border-radius:15px}
@@ -143,15 +156,25 @@
 #title{background: url(../img/title.png);width: 1296px;height: 78px;background-size: 100%;line-height:78px;color: white;font-size: 30px;-webkit-text-stroke: 1px rgba(46, 100, 165, 0.52);font-weight: bolder;text-shadow:5px 2px 6px rgba(19, 103, 204, 0.8);
 }
 #cardstar{height: 30px;margin: 175px 0px 0px 10px}
-#cardlvl{position: relative;z-index: 1;width: 25%;height: 30px;margin: 175px 0px 0px 60px;color: #272727b8;line-height:30px;font-weight: 600;font-size: 25px}
+#cardlvl{position: relative;z-index: 1;width: 25%;height: 30px; font-family: ht;margin: 175px 0px 0px 60px;color:#212020de;line-height:30px;font-weight: 600;font-size: 23px}
 .csar{background: url(../img/ico/boxstar0.png) no-repeat;width: 30px;height: 30px;background-size: 100%}
 #boxbutt{cursor:pointer;margin-top:145px;color: #111;background: url(../img/ico/button.png) no-repeat;background-size: 100%;font-size: 23px;font-weight: 700;-webkit-text-stroke: 1.3px rgb(165, 165, 165);line-height:72px;width: 181px;height: 72px}
 #datamenu{width: 85%;margin-left: 7.5%;border-radius: 150px;box-shadow: 5px 5px 3px #99B0CD;cursor:pointer;border-collapse:separate }
 .datame{ text-align: center;background-color:rgb(235,235,235);border: 1px rgb(127,146,206) solid;font-size: 16px;color: #313131;font-weight: 700;padding: 0.8%;-webkit-text-stroke: 0.3px rgb(165, 165, 165)}
 #datame1{background-image: linear-gradient(#5296E7, #3969CE);color: snow;-webkit-text-stroke: 0.3px rgba(0, 39, 109, 0.81)}
 #attr {width: 90%;margin: 2%}
-#attr div:nth-child(odd){width: 27%;height: 25px; background-color: #0000FF;margin:2.7% 0% 0 5%}
-#attr div:nth-child(even){ width: 18%;height: 25px;border-bottom: 1px black dashed;margin-top: 2.7%}
+#attr div{height: 25px;line-height:25px;font-size: 16px;font-weight: 500 }
+#attr h4{width: 33%;background:url(../img/dataname.png) no-repeat bottom;background-size: cover;height: 39px}
+#attr span{ position: absolute;left:0;z-index: 1;margin-left:15%;line-height:45px;font-size: 17px;color: #313131;font-family: ht}
+#attr span::before {
+    content: attr(data-text);
+    position: absolute;
+    -webkit-text-stroke: 1.5px #4a4a4a80;
+    z-index: -1;}
+#attr div:nth-child(even){border-radius: 50px;text-indent:10px;width: 14%;background-color: #5a96f7;margin:2.7% 0% 0 2%;color:snow;text-align:left;}
+#attr div:nth-child(odd){ width: 17%;border-bottom: 3px #9bb6f3 dotted;margin-top: 2.7%;text-align: right;color: #313131;
+    font-weight: 700;-webkit-text-stroke: 0.3px rgb(165, 165, 165)
+}
 /*招募板动画*/
 .card {background-repeat:no-repeat;background-size:100%; width:154px;height:210px;margin: 0 auto}
 .cardbt{ margin:13% 0% 0% 0%;width: 12.5% }
@@ -197,7 +220,7 @@
     z-index: 0;
     font-weight: 800;
     color: rgb(175, 50, 235);
-    font-family: '萝莉体3.1-凤殿更新';
+    font-family: loli;
     font-size: 38px;
     webkit-background-clip: text;
 }
@@ -249,7 +272,7 @@
 .txt::before {
     content: attr(data-text);
     position: absolute;
-    -webkit-text-stroke: 2px #ffffff;
+    -webkit-text-stroke: 3.5px #ffffff;
     z-index: -1;}
 /*
 扭蛋结果的背景：10
