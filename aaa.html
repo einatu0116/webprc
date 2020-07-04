@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <STYLE>
+        table {
+            font-family: verdana,arial,sans-serif;
+            font-size:11px;
+            color:#333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+
+        }
+        table th {
+            border-width: 1px;
+            padding: 2px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+        table td {
+            border-width: 1px;
+            padding: 2px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+    </STYLE>
+</head>
+<script src="layui/layui.js"></script>
+<body>
+<table class="gridtable">
+    <tr>
+        <th>能力值</th><th>1星</th><th>2星</th><th>3星</th><th>4星</th><th>5星</th>
+    </tr>
+</table>
+</body>
+<script>
+    layui.use(['layer','jquery'], function(){
+        var $ = layui.jquery
+        for (var i=0;i<10;i++)
+        {
+
+            var n=i*10+10
+            var s="<tr><td>"+(n)+"</td>"
+            for(var k=0;k<5;k++)
+            {s+="<td><table><tr><td>1级</td><td>"+spe(n,1,k)+"</td></tr><tr><td>30级</td><td>"+spe(n,50,k)+"</td></tr><tr><td>60级</td><td>"+spe(n,75,k)+"</td></tr><tr><td>100级</td><td>"+spe(n,100,k)+"</td></tr></table></td>"}
+            s+="</tr>"
+            $(".gridtable").append(s)
+        }
+
+
+    })
+    function attk(n,l,s) {
+        var lvl=(n*6465)
+        var l100= Math.pow(lvl*(8176)*50*Math.E,0.51)
+        var l1= Math.pow(lvl*(101)*50*Math.E,0.51)
+        return Math.round(Math.pow((((l100-l1)/100*(l-1))+l1)/1000*Math.E,0.95+0.02*s))
+        
+    }
+    function hp(n,l,s) {
+        var lvl=(n*8130)
+        var h100= Math.pow(lvl*(218525)*100*Math.E,Math.PI/10)
+        var h1= Math.pow(lvl*(101)*100*Math.E,Math.PI/10)
+        return Math.round(Math.pow(((h100-h1)/100*(l-1))+(h1*Math.PI)/Math.E,0.95+0.02*s))}
+
+
+
+    function def(n,l,s) {
+        var lvl=(n/85)
+        var j100= Math.pow(lvl*(20125),0.457)*5.5
+        var j1= Math.pow(lvl*(101),0.457)*5.5
+        var v=Math.round(Math.pow((j1+((j100-j1)/100*(l-1)))/Math.E,0.95+0.02*s));
+        return  v+"/减伤率:"+(100-(100/(v+100)*100)).toFixed(2)+"%"
+    }
+
+    function spe(n,l,s) {
+        var sp=Math.pow((n*2*(parseInt(l)+10)/210)+20,0.95+0.02*s)
+        //var sp=((n*2*(parseInt(l)+10)/210)+20)*(25+s*(1+s*1.05))/36
+        var hb=Math.log(((l+20)/61*Math.pow(n*2,8.2)))/Math.E-4.2
+        hb=hb>10?(hb*100%1000)/Math.PI:0
+        hb=Math.round(Math.pow(hb,0.95+0.02*s));
+        return "速度:"+Math.round(sp)+"/回避:"+hb+"/回避率:"+(100-(100/(hb+100)*100)).toFixed(2)+"%"
+    }
+</script>
+</html>
