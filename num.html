@@ -12,90 +12,10 @@
 </head>
 <body style="background-image:url(img/ico/bg-loading.gif);padding-top:150px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none; user-select:none;">
 
-
-
-<!--  <table>-->
-<!--    <tr>-->
-<!--      <td><input style="width: 100%" id="level" oninput = "value=value.replace(/[^\d]/g,'')" maxlength="6"></td>-->
-<!--      <td>-->
-<!--        <select id="ch" style="font-size: 14px;width: 100%" >-->
-<!--          <option value="1">伤害</option>-->
-<!--          <option value="2">暴击</option>-->
-<!--          <option value="3">回魔</option>-->
-<!--          <option value="4">削魔</option>-->
-<!--          <option value="5">恢复</option>-->
-<!--          <option value="6">异常</option>-->
-<!--        </select>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td colspan="2">-->
-<!--        <select id="rw" style="font-size: 14px;width: 100%" size="10" >-->
-<!--          <option value="1009">中二</option>-->
-<!--          <option value="1010">真步</option>-->
-<!--          <option value="1011">妹弓</option>-->
-<!--          <option value="1012">星法</option>-->
-<!--          <option value="1014">霞</option>-->
-<!--          <option value="1018">老师</option>-->
-<!--          <option value="1028">咲恋</option>-->
-<!--          <option value="1029">望</option>-->
-<!--          <option value="1030">扇子</option>-->
-<!--          <option value="1032">哈哈剑</option>-->
-<!--          <option value="1036">xcw</option>-->
-<!--          <option value="1043">狼</option>-->
-<!--          <option value="1044">yly</option>-->
-<!--          <option value="1047">黑骑</option>-->
-<!--          <option value="1049">姐姐</option>-->
-<!--          <option value="1053">莫妮卡</option>-->
-<!--          <option value="1056">大姐</option>-->
-<!--          <option value="1057">吉他</option>-->
-<!--          <option value="1061">511</option>-->
-<!--          <option value="1063">亚丽莎</option>-->
-<!--          <option value="1065">龙拳</option>-->
-<!--          <option value="1066">梨老八</option>-->
-<!--          <option value="1070">nnk</option>-->
-<!--          <option value="1071">克总</option>-->
-<!--          <option value="1075">水吃</option>-->
-<!--          <option value="1077">水女仆</option>-->
-<!--          <option value="1078">水黑</option>-->
-<!--          <option value="1079">水猫剑</option>-->
-<!--          <option value="1081">万圣刃</option>-->
-<!--          <option value="1083">万圣大眼</option>-->
-<!--          <option value="1087">春虎</option>-->
-<!--          <option value="1088">春田</option>-->
-<!--          <option value="1091">情姐</option>-->
-<!--          <option value="1092">安</option>-->
-<!--          <option value="1094">古蕾雅</option>-->
-<!--          <option value="1095">江户M</option>-->
-<!--          <option value="1096">江户扇</option>-->
-<!--          <option value="1097">雷姆</option>-->
-<!--          <option value="1099">amly</option>-->
-<!--          <option value="1108">克洛伊</option>-->
-<!--          <option value="1111">猫仓</option>-->
-<!--          <option value="1113">天兔</option>-->
-<!--          <option value="1114">露娜</option>-->
-<!--          <option value="1115">圣克</option>-->
-<!--          <option value="1117">圣伊</option>-->
-<!--          <option value="1119">春妈</option>-->
-<!--          <option value="1120">春黑</option>-->
-<!--          <option value="1122">魔霞</option>-->
-<!--          <option value="1124">卯月</option>-->
-<!--          <option value="1125">凛</option>-->
-<!--          <option value="1127">骑松鼠</option>-->
-<!--          <option value="1128">骑牛</option>-->
-<!--          <option value="1129">爽弓</option>-->
-<!--          <option value="1804">命吃</option>-->
-<!--          <option value="1805">蝶妈</option>-->
-<!--        </select>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--  </table>-->
-<!--*******************************-->
-
 <div id="hb">
 <section id="section-second" class="full abs"></section>
-<!--<div id="back"></div>-->
-  <div id="ui" class="full abs">
+<!--  菜单-->
+  <div id="ui">
     <div id="menu">
       <table><tr>
         <td id="m_new"><img src="img/ico/n000.png"></td>
@@ -107,11 +27,16 @@
       </tr></table>
     </div>
   </div>
+<!--  招募版-->
   <div id='bulletin' class='full abs hid layui-row'></div>
+<!--  快进-->
   <div id="qua" class="hid abs"></div>
+<!--  招募视频-->
   <video id="zm" class="full abs hid" autoplay="autoplay"><source type="video/mp4"></video>
   <video id="ckaime" class="full abs hid" autoplay="autoplay"><source type="video/mp4"></video>
+<!--  特效-->
   <div id="curta" class="full abs hid"><div class="full"></div><div class="full abs"></div><div class="full abs"></div></div>
+<!--  名字-->
   <div class="name hid">
     <table class="nametext img"><tr><td colspan="3" valign="middle" align="center" ><span></span></td></tr></table>
     <div id="star"><table><tr><td></td><td></td><td></td></tr></table></div>
@@ -121,13 +46,46 @@
       <tr><td class="mzstxt" data-text='GET' align="left">GET</td></tr>
     </table>
   </div>
+<!--  招募结束确认-->
   <div id="zmnew" class="hid">
   <div id='zmback' class='full abs'></div>
-  <table id='zmtable' class='full abs'><tr><td  align="center" valign="bottom"><div id="zmnewbox" class="layui-row"></div></td></tr>
+  <table id='zmtable'  class='full abs'><tr><td  align="center" valign="bottom"><div id="zmnewbox" class="layui-row"></div></td></tr>
   <tr><td align="center" valign="top"><div id="zmbutt">OK</div></td></tr>
   </table>
+  </div>
+<!--  大地图-->
+  <div id="mapback"   class="full abs hid">
+
+      <div id="map" class="abs">
+        <div id="wmapsea">
+          <div id="wmap"></div>
+        </div>
+      </div>
+      <table id="mapti">
+       <tr>
+         <td align="right"><img  src="img/ico/next1.png"></td>
+         <td width="1164px"  align="center" valign="center">
+           <div id="maparr">
+
+             <div id="maplist" class="layui-row">
+               <div class="mapbox layui-col-xs4" ><div class="mapimg"></div><div class=" mapname ">朱诺平原</div></div>
+               <div class="mapbox layui-col-xs4" ><div class="mapimg"></div><div class=" mapname " >帕拉斯高原</div></div>
+               <div class="mapbox layui-col-xs4" ><div class="mapimg"></div><div class=" mapname " >赫柏丘陵</div></div>
+               <div class="mapbox layui-col-xs4" ><div class="mapimg"></div><div class=" mapname " >维斯塔溪谷</div></div>
+             </div>
+           </div>
+         </td>
+         <td align="left"><img src="img/ico/next2.png"></td>
+       </tr>
+      </table>
 
   </div>
+
+<!--  工会之家-->
+ <div id="homeback" class="full abs hid">
+  <div id="homecd1" class="abs"></div>
+ </div>
+<!--  战斗-->
 </div>
 
 <table id="shade" class="hid"><tr>
@@ -154,8 +112,8 @@
             <div class="layui-col-xs11 hid" id="attr">
               <h4 class="layui-col-xs1"><span class="txt" data-text=""></span></h4><div class="layui-col-xs1">生命</div><div class="layui-col-xs1"></div><div class="layui-col-xs1">能量</div><div class="layui-col-xs1"></div>
               <div class="layui-col-xs1">攻击</div><div class="layui-col-xs1"></div><div class="layui-col-xs1">防御</div> <div class="layui-col-xs1"></div><div class="layui-col-xs1">充能</div><div class="layui-col-xs1"></div>
-            <div class="layui-col-xs1">魔攻</div><div class="layui-col-xs1"></div><div class="layui-col-xs1">魔防</div><div class="layui-col-xs1"></div><div class="layui-col-xs1">速度</div><div class="layui-col-xs1"></div>
-           <div class="layui-col-xs1">闪避</div><div class="layui-col-xs1"></div><div class="layui-col-xs1">命中</div><div class="layui-col-xs1"></div>
+              <div class="layui-col-xs1">魔攻</div><div class="layui-col-xs1"></div><div class="layui-col-xs1">魔防</div><div class="layui-col-xs1"></div><div class="layui-col-xs1">速度</div><div class="layui-col-xs1"></div>
+              <div class="layui-col-xs1">闪避</div><div class="layui-col-xs1"></div><div class="layui-col-xs1">命中</div><div class="layui-col-xs1"></div>
             </div>
           </div>
           <div class="layui-col-xs3"><div id="boxbutt">OK</div></div>

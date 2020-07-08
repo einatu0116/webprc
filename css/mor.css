@@ -15,6 +15,14 @@
 }
 
 
+
+/*地图界面箭头*/
+@keyframes nextaime {
+    0% {transform: scale3d(1, 1, 1)}
+    50% {transform: scale3d(1.25, 1.25, 1.25)}
+    100% {transform: scale3d(1, 1, 1);}
+}
+
 /*3星文本框远到近*/
 @keyframes fade-in {
     0% {opacity: 0;transform: translate3d(0, 40%, 0);}
@@ -72,12 +80,12 @@
 /*卡牌飞过*/
 @keyframes curtacard {
     0% {transform:rotate(0deg) translate(150px,50px)}
-    100% {transform:rotate(-10deg) translate(1250px,150px)}
+    100% {transform:rotate(-12deg) translate(1150px,150px)}
 }
 @keyframes curtacard2 {
     0% {transform:rotate(0deg) translate(150px,50px) scale(1,1)}
-    20% {transform:rotate(0deg) translate(150px,50px) scale(2,2)}
-    55% {transform:rotate(10deg) translate(1250px,150px) scale(1,1)}
+    20% {transform:rotate(0deg) translate(150px,50px) scale(1.6,1.6)}
+    55% {transform:rotate(12deg) translate(1150px,150px) scale(1,1)}
     100% {transform:  scale(0,0)}
 }
 /*1 2星彩虹*/
@@ -103,8 +111,24 @@
     71% {opacity: 1}
     100% {opacity: 1;background-color: white}
 }
+/*冒险地图*/
+#map{ overflow:hidden;width: 625px;height: 380px;top: 7%;left:10%;border-radius: 8%;border: 7px rgba(255, 255, 255, 0.46) solid; }
+#wmapsea{ background: url(../img/worldmap_01_sea.png) no-repeat;width: 3046px;height:3046px;background-size: 100.3%;padding: 793px;top:0px;left: 0px;position: relative}
+#wmap{background: url(../img/worldmap_01.png);width: 3046px;height:3046px}
+.mapbox{background:url(../img/mapbox.png);width: 280px;height: 140px;margin:0 52.5px 0 52.5px;overflow:hidden;border-radius: 30px}
+.mapimg{width: 256px;height: 124px;margin:7px 12px;border-radius: 12px }
+#mapti{ width: 100%;bottom: 20%;height: 175px;position: absolute;overflow:hidden}
+#maparr{ background:url(../img/mapti.png);width: 1164px;height: 175px;overflow:hidden}
+#maplist{width: 15000px;height: 145px;margin: 1.5% 0 0 -2%;left: 0}
+#mapti img{cursor:pointer; -webkit-animation:nextaime 2s linear infinite normal}
+.mapname{position: absolute;background-image: url(../img/maptitle.png);width: 225px;height: 34px;top:95px;left: 15px;-webkit-text-stroke:0.1px rgba(97, 97, 97, 0.73);
+    text-align: left;font-family: ht;font-size: 22px;font-weight: 600; text-indent:28px;color: #262645;}
+/*工会之家*/
+#homeback,#mapback{z-index: 30;background: linear-gradient(to right, rgba(255,255,255,0),rgba(255,255,255,1))}
+#homecd1{background: url(../img/ico/homecd1.png) no-repeat;background-size: 100%;width: 539px;height: 177px;right: 5%;top: 10%;cursor:pointer;}
+
 /*菜单*/
-#ui{z-index: 40}
+#ui{z-index: 40;bottom: 0;height:20%;width: 100%;position: absolute}
 #menu table{width: 85%;margin-left: 7.5%}
 #menu img{position: absolute;bottom: 10px;cursor:pointer}
 #m_cha img:hover {content: url(../img/ico/t001.png);}
@@ -117,18 +141,15 @@
 .full{width: 100%;height:100%}
 .abs{position: absolute;top: 0}
 .hid{visibility: hidden}
-
-
+/*通用*/
 #hb{width: 1440px;height:810px;background-color: rgba(128,240,240,0.1);
     margin: 0 auto;position: fixed;left: 50%;top: 50%;margin: -455px 0 0 -720px;
     border-radius: 2%;overflow:hidden;border: 6px floralwhite solid;
     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.18)
 }
-
-/*工会之家*/
 #shade{background-color: rgba(0,0,0,0.3);position: fixed;width: 100%;height: 100%;top: 0;z-index: 105}
-.borsiv{background: url(../img/item/icon_item_90005.png);width: 126px;height: 126px;margin: 20px;background-size: 100%}
 #menu{background: url(../img/menu.png);width: 1290px;height: 113px;background-size: 100%;position: absolute;bottom: 0;left: 50%;transform: translate(-50%, -10%)}
+/*队伍编制*/
 #box{background: url(../img/box.png);width: 1296px;height: 690px;background-size: 100%}
 .borgold{background: url(../img/borgold.png);width: 126px;height: 126px;margin: 18px 9px;background-size: 100%}
 .pt1{width: 126px;height: 126px;background: no-repeat center/89.8%;cursor:pointer}
@@ -146,7 +167,6 @@
     z-index: 1;
     font-family: ht;
     height: 30px;color:#212020de;line-height:30px;font-weight: 600;font-size: 16px}
-
 #databm{width: 1220px;height: 215px}
 #datapt{width: 430px;height: 215px;background-position: center;background-size: 97.5%;background-repeat: no-repeat;border-radius:15px}
 #datamb{width: 790px;height: 215px;}
@@ -175,6 +195,7 @@
 #attr div:nth-child(odd){ width: 17%;border-bottom: 3px #9bb6f3 dotted;margin-top: 2.7%;text-align: right;color: #313131;
     font-weight: 700;-webkit-text-stroke: 0.3px rgb(165, 165, 165)
 }
+
 /*招募板动画*/
 .card {background-repeat:no-repeat;background-size:100%; width:154px;height:210px;margin: 0 auto}
 .cardbt{ margin:13% 0% 0% 0%;width: 12.5% }
@@ -211,7 +232,7 @@
     position: relative;
     z-index: 1;
 }
-
+.borsiv{background: url(../img/item/icon_item_90005.png);width: 126px;height: 126px;margin: 20px;background-size: 100%}
 .mzs{position: absolute;top: -120px;width: 115%}
 .mzs_l{background: url(../img/mzs_l.png);background-size: 100%;width: 210px;height: 210px;top: -65px;left:-65px;position: absolute;z-index: -5;
    -webkit-animation:mzsl 10s linear infinite normal}
@@ -224,7 +245,6 @@
     font-size: 38px;
     webkit-background-clip: text;
 }
-
 #star td{width: 50px;height: 50px;background-repeat:no-repeat;background-size:100% 100%}
 #star{width: 150px;position: absolute;top: 0;left: 0;margin-left:135px}
 .staraime{background: url(../img/ico/star.png);-webkit-animation:staraime 2s;}
@@ -232,10 +252,12 @@
 
 
 /*扭蛋结果*/
-#zmback{background: url(../img/bg/bg-news-area.jpg) center;z-index: 10;background-size: 100%}
-#zmtable{z-index:55}
+#zmback{background: url(../img/bg/bg_530041.png) center;z-index: 10;background-size: 100%}
+#zmtable{z-index:55;background: rgba(255,255,255,0.3) }
 #zmnewbox{width: 58%;height: 335px;background: rgba(251,251,251,0.63);border-radius: 15px;box-shadow:2px 2px 3px gray;position:relative }
 #zmbutt{cursor:pointer;color: #111;margin: 2%;background: url(../img/ico/button.png) no-repeat;background-size: 100%;font-size: 23px;font-weight: 700;-webkit-text-stroke: 1.3px rgb(165, 165, 165);line-height:72px;width: 181px;height: 72px}
+
+
 
 
 /*字体*/
@@ -276,6 +298,7 @@
     z-index: -1;}
 /*
 扭蛋结果的背景：10
+冒险地图 工会之家：30
 菜单:40
 招募板：50
 快进：51
