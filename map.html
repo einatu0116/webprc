@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标拖动</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+<div onmousedown="downDiv(this)" onmousemove="moveDiv(this)" onmouseup="upDiv(this)">
+
+</div>
+
+
+
+<script>
+    //定义变量储存div的宽高
+    var obj_w, obj_h;
+    //定义一个变量判断是否执行移动函数
+    var mouseDown = false;
+
+    //鼠标按下函数
+    function downDiv(obj) {
+        //获取div的宽高
+        obj_w = obj.offsetWidth;
+        obj_h = obj.offsetHeight;
+        //鼠标
+        var e = event || window.event;
+        //e.clientX/Y 是获取鼠标相对浏览器的位置；将div中心自动居中到鼠标
+        obj.style.left = (e.clientX - obj_w / 2) + "px";
+        obj.style.top = (e.clientY - obj_h / 2) + "px";
+        console.log(obj.style.left, obj.style.top)
+        //按下时为ture,松开时为false，以判断是否执行执行mouveDiv
+        mouseDown = true;
+
+    }
+
+    //鼠标移动函数
+    function moveDiv(obj) {
+        obj_w = obj.offsetWidth;
+        obj_h = obj.offsetHeight;
+        var e = event || window.event;
+        console.log(e.clientX, e.clientY);
+        console.log(obj_w, obj_h);
+        if (mouseDown) {
+            obj.style.left = (e.clientX - obj_w / 2) + "px";
+            obj.style.top = (e.clientY - obj_h / 2) + "px";
+            console.log(obj.style.left, obj.style.top)
+        }
+
+    }
+
+    //鼠标松开函数
+    function upDiv(obj) {
+        mouseDown = false;
+    }
+
+</script>
+</body>
+
+</html>
