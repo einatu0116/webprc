@@ -23,6 +23,24 @@
     100% {transform: scale3d(1, 1, 1);}
 }
 
+
+/*地图加载*/
+@keyframes mapload {
+    0% {  background-image: radial-gradient(#000000 0%, #000000 0%, #000000 100%);}
+    50% {  background-image: radial-gradient(#000000 0%, #000000 0%, #000000 100%);}
+    55% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 10%, #000000 20%, #000000 100%);}
+    60% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 20%, #000000 30%, #000000 100%);}
+    65% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 30%, #000000 40%, #000000 100%);}
+    70% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 40%, #000000 50%, #000000 100%);}
+    75% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 50%, #000000 60%, #000000 100%);}
+    80% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 60%, #000000 70%, #000000 100%);}
+    85% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 70%, #000000 80%, #000000 100%);}
+    90% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 80%, #000000 90%, #000000 100%);}
+    95% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 90%, #000000 100%, #000000 100%);}
+    100% {  background-image: radial-gradient(rgba(255, 255, 255, 0) 100%, #000000 100%, #000000 100%);}
+}
+
+
 /*3星文本框远到近*/
 @keyframes fade-in {
     0% {opacity: 0;transform: translate3d(0, 40%, 0);}
@@ -67,6 +85,12 @@
     0% {background-image:url(../img/ico/card_13.png);}
     100% {background-image:url(../img/ico/card_03.png);}
 }
+@keyframes card3bink {
+    0% {opacity: 0%}
+    30% {opacity: 0;transform: scale3d(0, 0, 0)}
+    65% {opacity: 1;transform: scale3d(1.25, 1.25, 1.25)}
+    100% {opacity: 0;transform: scale3d(1, 1, 1)}
+}
 /*人变母猪石*/
 @keyframes mzs {
     100% {opacity: 0}
@@ -85,8 +109,8 @@
 @keyframes curtacard2 {
     0% {transform:rotate(0deg) translate(150px,50px) scale(1,1)}
     20% {transform:rotate(0deg) translate(150px,50px) scale(1.6,1.6)}
-    55% {transform:rotate(12deg) translate(1150px,150px) scale(1,1)}
-    100% {transform:  scale(0,0)}
+    60% {transform:rotateY(45deg) rotateX(-45deg) translate(1550px,150px) scale(1,1)}
+    100% {transform:rotate(0deg) scale(0,0)}
 }
 /*1 2星彩虹*/
 
@@ -117,15 +141,17 @@
 #wmap{background: url(../img/worldmap_01.png);width: 3046px;height:3046px}
 .mapbox{background:url(../img/mapbox.png);width: 280px;height: 140px;margin:0 52.5px 0 52.5px;overflow:hidden;border-radius: 30px}
 .mapimg{width: 256px;height: 124px;margin:7px 12px;border-radius: 12px }
-#mapti{ width: 100%;bottom: 20%;height: 175px;position: absolute;overflow:hidden}
+#mapli{ width: 100%;bottom: 20%;height: 175px;position: absolute;overflow:hidden}
 #maparr{ background:url(../img/mapti.png);width: 1164px;height: 175px;overflow:hidden}
 #maplist{width: 15000px;height: 145px;margin: 1.5% 0 0 -2%;left: 0}
-#mapti img{cursor:pointer; -webkit-animation:nextaime 2s linear infinite normal}
+#mapli img{cursor:pointer; -webkit-animation:nextaime 2s linear infinite normal}
 .mapname{position: absolute;background-image: url(../img/maptitle.png);width: 225px;height: 34px;top:95px;left: 15px;-webkit-text-stroke:0.1px rgba(97, 97, 97, 0.73);
     text-align: left;font-family: ht;font-size: 22px;font-weight: 600; text-indent:28px;color: #262645;}
+#mapload{width: 100%;height: 100%;z-index: 150;position: absolute}
+.maploadaime{-webkit-animation:mapload 1s}
 /*工会之家*/
 #homeback,#mapback{z-index: 30;background: linear-gradient(to right, rgba(255,255,255,0),rgba(255,255,255,1))}
-#homecd1{background: url(../img/ico/homecd1.png) no-repeat;background-size: 100%;width: 539px;height: 177px;right: 5%;top: 10%;cursor:pointer;}
+#homecd1{background: url(../img/ico/homecd1.png) no-repeat;background-size: 100%;width: 539px;height: 177px;right: 5%;top: 15%;cursor:pointer;}
 
 /*菜单*/
 #ui{z-index: 40;bottom: 0;height:20%;width: 100%;position: absolute}
@@ -137,6 +163,7 @@
 #m_save img:hover {content: url(../img/ico/s001.png);}
 #m_house img:hover {content: url(../img/ico/h001.png);}
 #m_bull img:hover {content: url(../img/ico/z001.png);}
+#back{background: url(../img/ico/back.png);z-index: 51;top: 25px;right: 50px;cursor:pointer;width: 76px;height: 62px}
 
 .full{width: 100%;height:100%}
 .abs{position: absolute;top: 0}
@@ -198,7 +225,7 @@
 
 /*招募板动画*/
 .card {background-repeat:no-repeat;background-size:100%; width:154px;height:210px;margin: 0 auto}
-.cardbt{ margin:13% 0% 0% 0%;width: 12.5% }
+.cardbt{ margin:13% 0% 0% 0%;width: 12.5%; }
 .cardbt:first-child,.cardbt:nth-child(6){ margin-left: 17%}
 .cardbt:nth-child(5n){ margin-right: 8%}
 .cardbt:nth-child(n+6){margin-top: 3%}
@@ -209,13 +236,13 @@
 #qua{background: url(../img/ico/quk.png);z-index: 51;top: 25px;right: 150px;cursor:pointer;width: 96px;height: 70px}
 .bulletinaime{-webkit-animation:bulletin 0.5s}
 #ckaime,#zm{z-index:55;background: black;}
-
+.stbink3{ background: url(../img/ico/binkstar3.png) no-repeat center;width: 256px;height: 250px;opacity: 0;-webkit-animation:card3bink  2s;left: -51px;top: -20px}
 /*抽卡动画*/
 #curta{z-index:70;overflow:hidden}
 .curtaaime{background-color: rgba(0,0,0,1);-webkit-animation:cur 1.05s}
 .shraaaime{background: url(../img/curta.png) no-repeat center;-webkit-animation:shra 0.6s;background-size:0%}
-.curtacard1{background: url(../img/ico/card_11.png) no-repeat center;height: 1000px;-webkit-animation:curtacard 1.05s;background-size:45% }
-.curtacard2 {background: url(../img/ico/card_12.png)  no-repeat center;height: 1000px;-webkit-animation:curtacard 1.05s;background-size:45%}
+.curtacard1{background: url(../img/ico/card_11.png) no-repeat center;height: 1000px;-webkit-animation:curtacard 1.25s;background-size:45% }
+.curtacard2 {background: url(../img/ico/card_12.png)  no-repeat center;height: 1000px;-webkit-animation:curtacard 1.25s;background-size:45%}
 .curtacard3 {background: url(../img/ico/card_13.png)  no-repeat center;height: 1000px;-webkit-animation:curtacard2 2.25s;background-size:45%}
 .sback{background:url(../img/star3_back.png) no-repeat;filter:blur(2px);background-size: 100%;}
 .starki1{-webkit-animation:starki1 2.25s;background-image: url(../img/star3_kira1.png);background-position: center;background-repeat: no-repeat}

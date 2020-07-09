@@ -181,23 +181,33 @@ layui.use(['layer','jquery'], function(){
         mapnum1=0
         qhback(-2)
         qhmue(2)
-        qhbgm("responses/bgm_map.m4a")
-        $("#mapti img").eq(0).css("visibility",'hidden');
-        $("#mapti img").eq(1).css("visibility",'inherit');
+        $("#mapload").addClass("maploadaime")
+        $("#mapload").css("visibility",'inherit');
+        $("#mapli img").eq(0).css("visibility",'hidden');
+        $("#mapli img").eq(1).css("visibility",'inherit');
         $("#maplist").css('margin-left',"-2%")
-        mapph(0)
-        bgm.currentTime=7.5
+        maptran(0)
+        setTimeout(function () {
+            qhbgm("responses/bgm_map.m4a")
+            $("#mapload").css("visibility",'hidden');
+            $("#mapload").removeClass("maploadaime")
+
+            bgm.currentTime=5.5
+
+
+        }, 1000)
+
     }
     //点击
-    $(document).on('click','.mapbox',function (e) {mapph($(".mapbox").index(this))})
-    $("#mapti img").click(function () {
+    $(document).on('click','.mapbox',function (e) {maptran($(".mapbox").index(this))})
+    $("#mapli img").click(function () {
             if(!mapbool) return
-            t1=$("#mapti img").index(this)*2-1
-            mapgd(t1)
+            t1=$("#mapli img").index(this)*2-1
+            mapchange(t1)
 
         })
     //地图切换
-    function mapph(num) {
+    function maptran(num) {
         if(mapnum==num)return
         mapnum=num
         switch (mapnum) {
@@ -207,24 +217,24 @@ layui.use(['layer','jquery'], function(){
             case 3: $("#wmapsea").css({"left":"-1775px","top":"-2750px"}); break;
         }
     }
-    function mapgd(t1) {
+    function mapchange(t1) {
         mapnum1+=t1
         mapbool=false
         mapmove(0,t1)
         mapnum1<0?mapnum1=0:mapnum1>1?mapnum1=1:true
         if(t1==1)
         {
-            if(mapnum<mapnum1)mapph(mapnum1)
-            if(mapnum1<2)   $("#mapti img").eq(0).css("visibility",'inherit');
+            if(mapnum<mapnum1)maptran(mapnum1)
+            if(mapnum1<2)   $("#mapli img").eq(0).css("visibility",'inherit');
             //最大个数-4
-            if(mapnum1>0)   $("#mapti img").eq(1).css("visibility",'hidden');
+            if(mapnum1>0)   $("#mapli img").eq(1).css("visibility",'hidden');
         }
         if(t1==-1)
         {
-            if(mapnum>mapnum1)mapph(mapnum1)
+            if(mapnum>mapnum1)maptran(mapnum1)
             //最大个数-5
-            if(mapnum1>-1) $("#mapti img").eq(1).css("visibility",'inherit');
-            if(mapnum1<1) $("#mapti img").eq(0).css("visibility",'hidden');
+            if(mapnum1>-1) $("#mapli img").eq(1).css("visibility",'inherit');
+            if(mapnum1<1) $("#mapli img").eq(0).css("visibility",'hidden');
 
         }
 
@@ -359,17 +369,18 @@ layui.use(['layer','jquery'], function(){
         boolzmb=true
         //女仆动画播放完毕后 开始播放招募卡片动画
         document.getElementById("zm").onended = function () {
-            $("#bulletin").addClass("bulletinaime");zmb(0);
+            $("#bulletin").addClass("bulletinaime");zmb(0); carcon[1]=false
             $("#zm").css("visibility",'hidden');bgm.currentTime=6.52}
         //减少DOM操作 全部在这里添加。
         t1="";
         for(var i=0;i<x;i++)
-        {t1+= "<div class='layui-col-xs2 cardbt'><div class='card img'></div></div>"}
+        {t1+= "<div class='layui-col-xs2 cardbt'><div class='card img'><div class='abs'></div></div></div>"}
         $("#bulletin").append(t1);t1=null;
 
     }
     //招募版
     function zmb(x) {
+
         if(x==0)
         //carddata内已经获取到本次扭蛋的结果 rcard用于过滤重复的卡
         {$("#qua").css("visibility",'inherit');
@@ -381,13 +392,13 @@ layui.use(['layer','jquery'], function(){
         {
             if(!boolzmb) return
             $(".card").eq(x).addClass("card"+rstar[x])
+            $(".card .abs").eq(x).addClass("stbink"+rstar[x])
             setTimeout(function () {zmb(x+1);}, 355+-18*x);}
-        else {gash()}
+        else {setTimeout(function () {carcon[1]=true}, 2350);}
     }
     //抽取扭蛋
     function gash() {
 
-        setTimeout(function () {carcon[1]=true}, 2350);
     }
 
 
@@ -434,8 +445,7 @@ layui.use(['layer','jquery'], function(){
 
         }
         else {
-            $("#curta").css("visibility",'inherit')
-            $("#curta").addClass("curtaaime")
+            $("#curta").addClass("curtaaime").css("visibility",'inherit')
             $("#curta div").eq(0).addClass("curtacard"+data.star)
             if(data.star>1)$("#curta div").eq(1).addClass("shraaaime")
             document.getElementById("vid").play();
@@ -450,7 +460,7 @@ layui.use(['layer','jquery'], function(){
                 $("#curta").removeClass("curtaaime")
                 $(".curtacard" +data.star).removeClass("curtacard"+data.star)
                 $(".shraaaime").removeClass("shraaaime")
-                setTimeout(function () {carcon[2]=true;$("#curta").css("visibility",'hidden')},500);}, 550)
+                setTimeout(function () {carcon[2]=true;$("#curta").css("visibility",'hidden')},500);}, 850)
             // $(".nametext").css("background-image","url(img/name1.png)");
         }
         //console.log(data.star+"//"+(-25*(data.star-1)*(data.star-2)+Math.pow(10,data.star-1)))
@@ -565,7 +575,6 @@ layui.use(['layer','jquery'], function(){
     })
     //招募板点击
     $(document).on('click','#bulletin',function () {
-
         if(carcon[1])
         {zmboff();}
     })
@@ -579,6 +588,12 @@ layui.use(['layer','jquery'], function(){
         document.getElementById("vid").play();
         $("#zmnew").css("visibility",'hidden');})
     //-----------------------------------------------------------通用方法
+
+    //返回主界面
+    $(document).on('click','#back',function () {
+        qhback(back)
+        qhbgm("responses/bgm_main.m4a")
+        qhmue(0)})
 
     //切换背景
     function qhback(id) {
@@ -608,8 +623,9 @@ layui.use(['layer','jquery'], function(){
             case 2: $("#mapback").css("visibility",'hidden') ;break;
         }
         switch (num) {
-            case 1:  $("#homeback").css("visibility",'inherit') ;break;
-            case 2:  $("#mapback").css("visibility",'inherit') ;break;
+            case 0:  $("#back").css("visibility",'hidden') ;break;
+            case 1:  $("#homeback").css("visibility",'inherit') ;$("#back").css("visibility",'inherit');break;
+            case 2:  $("#mapback").css("visibility",'inherit') ;$("#back").css("visibility",'inherit');break;
         }
 
         mue=num

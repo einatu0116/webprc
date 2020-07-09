@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
       <meta charset="UTF-8">
-      <title>Title</title>
+     <title>公主连结！</title>
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/mor.css">
   <script src="layui/layui.js"></script>
@@ -29,7 +29,8 @@
   </div>
 <!--  招募版-->
   <div id='bulletin' class='full abs hid layui-row'></div>
-<!--  快进-->
+<!--  功能钮-->
+  <div id="back" class="hid abs"></div>
   <div id="qua" class="hid abs"></div>
 <!--  招募视频-->
   <video id="zm" class="full abs hid" autoplay="autoplay"><source type="video/mp4"></video>
@@ -47,6 +48,7 @@
     </table>
   </div>
 <!--  招募结束确认-->
+<!--  招募结束确认-->
   <div id="zmnew" class="hid">
   <div id='zmback' class='full abs'></div>
   <table id='zmtable'  class='full abs'><tr><td  align="center" valign="bottom"><div id="zmnewbox" class="layui-row"></div></td></tr>
@@ -55,13 +57,12 @@
   </div>
 <!--  大地图-->
   <div id="mapback"   class="full abs hid">
-
-      <div id="map" class="abs">
+    <div id="map" class="abs">
         <div id="wmapsea">
           <div id="wmap"></div>
         </div>
       </div>
-      <table id="mapti">
+      <table id="mapli">
        <tr>
          <td align="right"><img  src="img/ico/next1.png"></td>
          <td width="1164px"  align="center" valign="center">
@@ -80,6 +81,7 @@
       </table>
 
   </div>
+  <div id="mapload" class="hid"></div>
 
 <!--  工会之家-->
  <div id="homeback" class="full abs hid">
