@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/mor.css">
+    <script src="layui/layui.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/vidbg.js"></script>
+
+    <style>
+
+        @keyframes boxhover {
+            0% {background-color: rgba(55, 55, 55, 0.8);opacity: 0.5}
+            100% {background-color: rgba(55, 55, 55, 0.8);opacity: 1}
+        }
+
+        #t2 td{
+            border: seashell solid 2px;}
+
+        #hb{width: 1440px;height:810px;background: url(img/batbak/bg_100001.png) no-repeat center;background-size: 100%;
+            margin: 0 auto;position: fixed;left: 50%;top: 50%;margin: -455px 0 0 -720px;
+            border-radius: 2%;overflow:hidden;border: 6px floralwhite solid;
+            box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.18)
+        }
+
+        .ubc{width: 25px;height: 108px;transform: rotateZ(180deg) }
+        .enbuff,.batbuff{width:44px;height: 51.5px;position: absolute;top: 0;opacity: 0.85;background-size: 100%}
+        #enemy{ height: 450px;transform: rotateX(-11deg) rotateY(-11deg);position: absolute;left: 35.75%;}
+        .enbox,.batbox{border-radius: 10px}
+        .enbox:hover,.batbox:hover{background-color: rgba(55, 55, 55, 0.8)}
+        .enhp1,.bathp1{background-color: #000000;width: 100%;height: 15px;border: 2px rgba(0, 0, 0, 0.32) solid;border-radius: 10px;position: absolute;bottom: 0}
+        .enhp2,.bathp2{width: 50%; background-color: #22ff22;height: 15px;border: 2px rgba(0, 0, 0, 0.32) solid;border-radius: 10px;position: absolute;bottom: 0}
+
+        .ents,.batts{height: 32px;  display: flex; flex-wrap:wrap-reverse;}
+        .ents1,.batts1{width:20px;height: 23.3px;background-size: 100%;background-image: url(img/ico/buff/atkup.png)}
+        .enub1,.batub1{background: url(img/ico/ub1.png);width: 25px;height: 108px;position: absolute }
+        .enub2,.batub2{background: url(img/ico/ub2.png);width: 25px;height: 50%;position: absolute;}
+
+        #batmb{ height: 260px;position: absolute;bottom: 35px;left: 5%}
+        .batrw{height: 128px;width: 128px;background: url(img/borgold.png) no-repeat center;background-size: 100%;position: relative}
+        .batpt{height: 128px;width: 128px}
+    </style>
+</head>
+<body style="background-image:url(img/ico/bg-loading.gif);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none; user-select:none;">
+
+
+
+<div id="hb">
+    <table id="enemy"><tr id="enemytr"> </tr></table>
+
+    <table id="batmb">
+       <tr id="batteam">
+       </tr>
+    </table>
+
+</div>
+
+
+</body>
+
+<script>
+    layui.use(['layer','jquery'], function(){
+        var layer = layui.layer
+        var $ = layui.jquery
+
+
+
+
+        var star3=new Array(
+            {"name":"佩可莉姆","id":"1058","star":"1","zm":true,"lvl":"1","pos":155,"hp":95,"mp":40,"mph":5,"atk":44,"def":93,"spe":17,"stk":4,"sef":65},
+            {"name":"日和","id":"1001","star":"1","zm":true,"lvl":"1","pos":200,"hp":65,"mp":40,"mph":5,"atk":88,"def":54,"spe":56,"stk":0,"sef":38},
+            {"name":"怜","id":"1003","star":"1","zm":true,"lvl":"1","pos":250,"hp":75,"mp":40,"mph":5,"atk":83,"def":58,"spe":43,"stk":0,"sef":45},
+            {"name":"可可萝","id":"1059","star":"1","zm":true,"lvl":"1","pos":500,"hp":60,"mp":40,"mph":5,"atk":42,"def":89,"spe":57,"stk":4,"sef":81},
+            {"name":"凯留","id":"1060","star":"1","zm":true,"lvl":"1","pos":750,"hp":48,"mp":40,"mph":5,"atk":0,"def":37,"spe":46,"stk":94,"sef":42},
+            {"name":"优衣","id":"1002","star":"1","zm":true,"lvl":"1","pos":800,"hp":51,"mp":40,"mph":5,"atk":0,"def":75,"spe":30,"stk":58,"sef":90},
+        )
+
+        var battle=new Array()
+
+        enemyadd()
+
+
+
+        function enemyadd() {
+            for (var i=0;i<5;i++)
+            {
+                 var ph="img/emy/"+star3[i].id+"31.webp"
+                 var po=145-(star3[i].pos-star3[0].pos)/(820-star3[0].pos)*250
+
+                var bt="img/pt/"+star3[i].id+"11.webp"
+                $("#batteam").append("<td class='batbox' align='center' width='185px'><table><tr><td class='batts'><div class='batts1 '></div></td><td align='center' valign='bottom' rowspan='2'><div class='ubc'><div class='batub1'></div><div class='batub2'></div></div></td></tr</tr>" +
+                    "<tr><td class='batrw' style=''><div class='batbuff' style='background-image: url(img/ico/buff/sls.png)'></div><div class='batpt' style='background: url("+bt+") no-repeat center/90.5%;'></div></td></tr>" +
+                    "<tr><td style='position: relative' colspan='2' height='24px'><div class='bathp1'></div><div class='bathp2'></div></td></tr></table></td>")
+
+                $("#enemytr").append("<td class='enbox' align='center' width='185px'><table  style='margin-top:"+po+"%'><tr><td class='ents'><div class='ents1 '></div><div class='ents1 '></div><div class='ents1 '></div><div class='ents1 '></div><div class='ents1 '></div></td><td align='center' valign='bottom' rowspan='2'><div class='ubc'><div class='enub1'></div><div class='enub2'></div></div></td></tr>" +
+                    "<tr><td style='background: url("+ph+");width: 128px;height: 128px;position: relative'><div class='enbuff' style='background-image: url(img/ico/buff/sls.png)'></div></td></tr>" +
+                    "<tr><td style='position: relative' colspan='2' height='24px'><div class='enhp1'></div><div class='enhp2'></div></td></tr></table></td>")
+            }
+        }
+        
+        
+
+        function f(g,star,lvl) {
+            var data=new Array({ "name" :g.name , "id":g.id,"star":star,"lvl":lvl,"atk":0,"def":0,"atk2":0,"def2":0,"sp":0,"hb":0,"hp":0 })
+            data.atk=attk(g.atk,lvl,star)
+            data.atk2=attk(g.stk,lvl,star)
+            data.def= 1-100/(def(g.def,lvl,star)+100)
+            data.def2=1-100/(def(g.sef,lvl,star)+100)
+            data.sp=spe(g.spe,lvl,star,true)
+            data.hb=1-100/(spe(g.spe,lvl,star,false)+100)
+            data.hp=hp(g.hp,lvl,star)
+            return data
+        }
+
+    })
+
+    
+
+
+    function attk(n,l,s) {
+        var lvl=(n*3500)
+        var l100= Math.pow(lvl*(8000)*50*Math.E,0.52)
+        var l1= Math.pow(lvl*(101)*50*Math.E,0.52)
+        return Math.round(Math.pow((((l100-l1)/100*(l-1))+l1)/1000*Math.E,0.95+0.02*s))
+
+    }
+    function hp(n,l,s) {
+        var lvl=(n*n*700)
+        var h100= Math.pow(lvl*(28658)*80*Math.E,Math.PI/10)
+        var h1= Math.pow(lvl*(101)*80*Math.E,Math.PI/10)
+        return Math.round(Math.pow(((h100-h1)/100*(l-1))+(h1*Math.PI)/Math.E,0.95+0.02*s))}
+
+
+
+    function def(n,l,s) {
+        var lvl=(Math.pow((n*n)+n,1.05))
+        var j100= Math.pow(lvl*(6235),0.3)*4
+        var j1= Math.pow(lvl*(5),0.3)*4
+        var v=Math.round(Math.pow((j1+((j100-j1)/100*(l-1)))/Math.E,0.95+0.02*s));
+        return  v
+    }
+
+    function spe(n,l,s,bool) {
+        var sp=Math.pow((n*2*(parseInt(l)+10)/210)+20,0.95+0.02*s)
+        if(bool) return Math.round(sp)
+        //var sp=((n*2*(parseInt(l)+10)/210)+20)*(25+s*(1+s*1.05))/36
+        var hb=Math.log(((l*30)/125*Math.pow(n*Math.pow(n,0.3),7)))/Math.E-Math.PI
+        hb=hb>10?(hb*100%1000)/Math.PI:0
+        hb=Math.round(Math.pow(hb,0.95+0.02*s));
+        return hb
+    }
+
+
+</script>
+</html>
