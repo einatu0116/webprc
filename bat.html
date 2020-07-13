@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
     <link rel="stylesheet" href="layui/css/layui.css">
     <link rel="stylesheet" href="css/mor.css">
     <script src="layui/layui.js"></script>
@@ -11,10 +12,8 @@
 
     <style>
 
-        @keyframes boxhover {
-            0% {background-color: rgba(55, 55, 55, 0.8);opacity: 0.5}
-            100% {background-color: rgba(55, 55, 55, 0.8);opacity: 1}
-        }
+
+
 
         #t2 td{
             border: seashell solid 2px;}
@@ -27,20 +26,46 @@
 
         .ubc{width: 25px;height: 108px;transform: rotateZ(180deg) }
         .enbuff,.batbuff{width:44px;height: 51.5px;position: absolute;top: 0;opacity: 0.85;background-size: 100%}
-        #enemy{ height: 450px;transform: rotateX(-11deg) rotateY(-11deg);position: absolute;left: 35.75%;}
+         #enemy{ height: 450px;transform: rotateX(-11deg) rotateY(-11deg);position: absolute;left: 35.75%;}
         .enbox,.batbox{border-radius: 10px}
-        .enbox:hover,.batbox:hover{background-color: rgba(55, 55, 55, 0.8)}
+        .enbox:hover{background-color: rgba(55, 55, 55, 0.65)
+        }
         .enhp1,.bathp1{background-color: #000000;width: 100%;height: 15px;border: 2px rgba(0, 0, 0, 0.32) solid;border-radius: 10px;position: absolute;bottom: 0}
-        .enhp2,.bathp2{width: 50%; background-color: #22ff22;height: 15px;border: 2px rgba(0, 0, 0, 0.32) solid;border-radius: 10px;position: absolute;bottom: 0}
+        .enhp2,.bathp2{width: 100%; background-color: #22ff22;height: 15px;border: 2px rgba(0, 0, 0, 0.32) solid;border-radius: 10px;position: absolute;bottom: 0}
 
         .ents,.batts{height: 32px;  display: flex; flex-wrap:wrap-reverse;}
-        .ents1,.batts1{width:20px;height: 23.3px;background-size: 100%;background-image: url(img/ico/buff/atkup.png)}
+        .ents1,.batts1{width:20px;height: 23.3px;background-size: 100%;background-image: url(img/ico/buff/atkup.png);margin-right: 2px}
+        #cdebuff div,#cdbbuff div{width:44px;height: 51.5px;background-size: 100%;background-image: url(img/ico/buff/refl.png);margin-right: 4px}
+        #cdebuff,#cdbbuff{height: 51.5px}
+        #cdebuff,#cdebuff div{transform: rotateY(180deg)}
         .enub1,.batub1{background: url(img/ico/ub1.png);width: 25px;height: 108px;position: absolute }
-        .enub2,.batub2{background: url(img/ico/ub2.png);width: 25px;height: 50%;position: absolute;}
-
-        #batmb{ height: 260px;position: absolute;bottom: 35px;left: 5%}
+        .enub2,.batub2{background: url(img/ico/ub2.png);width: 25px;height: 0%;position: absolute;}
+         #batmb{width: 94%; height: 200px;position: absolute;bottom: 15px;left: 3%}
         .batrw{height: 128px;width: 128px;background: url(img/borgold.png) no-repeat center;background-size: 100%;position: relative}
         .batpt{height: 128px;width: 128px}
+        .battips{ font-weight: 600;font-size: 15px}
+
+        .batbox{background: url(img/ico/batbor.png) center/100%}
+        /*-webkit-animation:boxsle 1.2s linear infinite normal;*/
+        #batcd{position: absolute}
+        #batmue{background-image: url(img/ico/battime.png);width: 300px;height: 80px }
+        .batmue .font {color: #6e4c22;font-size: 16px;font-weight: 600;text-wrap: normal;position: relative;z-index: 1}
+        #cdbuff span {color: #313131;font-size: 24px;font-weight: 600;text-wrap: normal;position: relative;z-index: 1}
+        #batmue .font {color: #4c2200;font-size: 32px;font-weight: 700;text-wrap: normal;position: relative;z-index: 1}
+        .batmue .font::before,#batmue .font::before,#cdbuff span::before {
+            content: attr(data-text);
+            position: absolute;
+            -webkit-text-stroke: 3.5px #ffffff;
+            z-index: -1;}
+        .batmue .ico{width: 64px;height: 64px;background-size: 100%;background-repeat: no-repeat}
+        .batsk{width: 280px;height: 50px;position: relative;top:-150px;}
+        .skico{background: url(img/sk/icon_skill_1001.png)center/100%;width: 52px;height: 52px;left:-5px;position: absolute;transform: rotateZ(10deg) rotateX(-11deg) rotateY(11deg)}
+        .skico:nth-child(1){top: -40px }
+        .skico:nth-child(2){top: 10px}
+        .skico:nth-child(3){top: 60px}
+        .skico:nth-child(4){top: 110px}
+        .hr{ height:3px;border:none;border-top:3px solid #555555;}
+        .bard,.enrd{background-image: url(img/ico/batred.png);width: 84px;height: 27px;position: absolute;bottom:1%;right: 3%;opacity: 0}
     </style>
 </head>
 <body style="background-image:url(img/ico/bg-loading.gif);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none; user-select:none;">
@@ -48,12 +73,28 @@
 
 
 <div id="hb">
-    <table id="enemy"><tr id="enemytr"> </tr></table>
+    <table id="batcd">
+        <tr><td colspan="3" align="center" id="batmue"><div class="font" data-text="回合-1" >回合-1</div></td></tr>
+        <tr>
+            <td class="batmue" align="center"><div class="ico"  style="background-image: url(img/ico/batmue0.png)"></div> <div data-text="对战信息" class="font">对战信息</div> </td>
+            <td class="batmue" align="center"><div class="ico" style="background-image: url(img/ico/batmue1.png)"></div>  <div data-text="胜利奖励"  class="font">胜利奖励</div></td>
+            <td class="batmue" align="center"><div class="ico" style="background-image: url(img/ico/batmue2.png)"></div>  <div data-text="对战记录"  class="font">对战记录</div></td>
+        </tr>
 
-    <table id="batmb">
-       <tr id="batteam">
-       </tr>
     </table>
+
+    <table id="enemy"><tr id="enemytr"> </tr></table>
+    <table id="batmb" ><tr id="batteam"></tr></table>
+
+
+   <table id="cdbuff" style="position: absolute;top: 325px;left: 3%">
+       <tr><td height="51.5px"><div  id="cdebuff" class="layui-row"><div class="layui-col-xs4"></div><div class="layui-col-xs4"></div></div><span style="float: right" data-text="敌方场地">敌方场地</span></td></tr>
+       <td width="400px" valign="center" height="10px"><hr class="hr" /></td>
+       <tr><td height="51.5px"><span data-text="我方场地">我方场地</span><div id="cdbbuff"  class="layui-row"></div></td></tr>
+   </table>
+
+
+
 
 </div>
 
@@ -68,55 +109,113 @@
 
 
 
-        var star3=new Array(
+        var enemyt=new Array(
             {"name":"佩可莉姆","id":"1058","star":"1","zm":true,"lvl":"1","pos":155,"hp":95,"mp":40,"mph":5,"atk":44,"def":93,"spe":17,"stk":4,"sef":65},
-            {"name":"日和","id":"1001","star":"1","zm":true,"lvl":"1","pos":200,"hp":65,"mp":40,"mph":5,"atk":88,"def":54,"spe":56,"stk":0,"sef":38},
-            {"name":"怜","id":"1003","star":"1","zm":true,"lvl":"1","pos":250,"hp":75,"mp":40,"mph":5,"atk":83,"def":58,"spe":43,"stk":0,"sef":45},
-            {"name":"可可萝","id":"1059","star":"1","zm":true,"lvl":"1","pos":500,"hp":60,"mp":40,"mph":5,"atk":42,"def":89,"spe":57,"stk":4,"sef":81},
-            {"name":"凯留","id":"1060","star":"1","zm":true,"lvl":"1","pos":750,"hp":48,"mp":40,"mph":5,"atk":0,"def":37,"spe":46,"stk":94,"sef":42},
             {"name":"优衣","id":"1002","star":"1","zm":true,"lvl":"1","pos":800,"hp":51,"mp":40,"mph":5,"atk":0,"def":75,"spe":30,"stk":58,"sef":90},
+            {"name":"日和","id":"1001","star":"1","zm":true,"lvl":"1","pos":200,"hp":65,"mp":40,"mph":5,"atk":88,"def":54,"spe":56,"stk":0,"sef":38},
+            {"name":"凯留","id":"1060","star":"1","zm":true,"lvl":"1","pos":750,"hp":48,"mp":40,"mph":5,"atk":0,"def":37,"spe":46,"stk":94,"sef":42},
+            {"name":"可可萝","id":"1059","star":"1","zm":true,"lvl":"1","pos":500,"hp":60,"mp":40,"mph":5,"atk":42,"def":89,"spe":57,"stk":4,"sef":81},
         )
+
+
+        var batt=new Array(
+         {"name":"优衣","id":"1002","star":"1","zm":true,"lvl":"1","pos":800,"hp":51,"mp":40,"mph":5,"atk":0,"def":75,"spe":30,"stk":58,"sef":90},
+        {"name":"日和","id":"1001","star":"1","zm":true,"lvl":"1","pos":200,"hp":65,"mp":40,"mph":5,"atk":88,"def":54,"spe":56,"stk":0,"sef":38},
+        {"name":"凯留","id":"1060","star":"1","zm":true,"lvl":"1","pos":750,"hp":48,"mp":40,"mph":5,"atk":0,"def":37,"spe":46,"stk":94,"sef":42},
+        {"name":"可可萝","id":"1059","star":"1","zm":true,"lvl":"1","pos":500,"hp":60,"mp":40,"mph":5,"atk":42,"def":89,"spe":57,"stk":4,"sef":81},
+         {"name":"怜","id":"1003","star":"1","zm":true,"lvl":"1","pos":250,"hp":75,"mp":40,"mph":5,"atk":83,"def":58,"spe":43,"stk":0,"sef":45}
+            )
 
         var battle=new Array()
 
-        enemyadd()
+        var enemy=new Array()
+        batload()
 
 
+        function batload() {
+            px(enemyt)
+            enemyadd(enemyt)
+            px(batt)
+            batadd(batt)
+        }
 
-        function enemyadd() {
-            for (var i=0;i<5;i++)
-            {
-                 var ph="img/emy/"+star3[i].id+"31.webp"
-                 var po=145-(star3[i].pos-star3[0].pos)/(820-star3[0].pos)*250
+      $(".batsk").eq(0).css("visibility",'inherit')
 
-                var bt="img/pt/"+star3[i].id+"11.webp"
-                $("#batteam").append("<td class='batbox' align='center' width='185px'><table><tr><td class='batts'><div class='batts1 '></div></td><td align='center' valign='bottom' rowspan='2'><div class='ubc'><div class='batub1'></div><div class='batub2'></div></div></td></tr</tr>" +
-                    "<tr><td class='batrw' style=''><div class='batbuff' style='background-image: url(img/ico/buff/sls.png)'></div><div class='batpt' style='background: url("+bt+") no-repeat center/90.5%;'></div></td></tr>" +
-                    "<tr><td style='position: relative' colspan='2' height='24px'><div class='bathp1'></div><div class='bathp2'></div></td></tr></table></td>")
 
-                $("#enemytr").append("<td class='enbox' align='center' width='185px'><table  style='margin-top:"+po+"%'><tr><td class='ents'><div class='ents1 '></div><div class='ents1 '></div><div class='ents1 '></div><div class='ents1 '></div><div class='ents1 '></div></td><td align='center' valign='bottom' rowspan='2'><div class='ubc'><div class='enub1'></div><div class='enub2'></div></div></td></tr>" +
-                    "<tr><td style='background: url("+ph+");width: 128px;height: 128px;position: relative'><div class='enbuff' style='background-image: url(img/ico/buff/sls.png)'></div></td></tr>" +
-                    "<tr><td style='position: relative' colspan='2' height='24px'><div class='enhp1'></div><div class='enhp2'></div></td></tr></table></td>")
+        function px(x) {
+            for(var i=0;i<x.length-1;i++)
+            {for(var j=i+1;j<x.length;j++)
+             {
+                 if(parseInt(x[i].pos)>parseInt(x[j].pos)) x.splice(i,1,...x.splice(j,1,x[i]))
+             }
             }
         }
-        
-        
+
+        var battips
+
+        $(document).on('mouseover mouseout','.batrw',function (event) {
+            if(event.type == "mouseover")
+            {
+
+                var ind=$(".batrw").index(this)
+                battips=layer.tips('<table class="battips"><tr><td align="left" >'+battle[ind].name+'</td><td align="left" colspan="2">LV:'+battle[ind].lvl+'</td></tr>' +
+                    '<tr><td align="left" colspan="3">生命:'+battle[ind].hpx+'/'+battle[ind].hp+'</td></tr>' +
+                    '<tr><td align="left" colspan="3">能量:'+battle[ind].mpx+'/'+battle[ind].mp+'</td></tr>' +
+                    '<tr><td width="80px">攻击:'+battle[ind].atk+'</td><td width="10px"></td><td width="80px">防御:'+battle[ind].def+'</td></tr>' +
+                    '<tr><td width="80px">魔攻:'+battle[ind].atk2+'</td><td width="10px"></td><td width="80px">魔御:'+battle[ind].def2+'</td></tr>' +
+                    '<tr><td width="80px">敏捷:'+battle[ind].sp+'</td><td width="10px"></td><td width="80px">回避:'+battle[ind].hb+'</td></tr>' +
+                    '</table>'
+                    ,this, {tips: [1, 'rgba(26,26,26,0.84)'],time:0,tipsMore: true})}
+                else parent.layer.close(battips)
+
+        })
+
+
+        function enemyadd(x) {
+            for (var i=0;i<x.length;i++)
+            {
+                enemy.push(f(x[i],5,100))
+                var ph="img/emy/"+x[i].id+"31.webp"
+                var po=145-(x[i].pos-x[0].pos)/(820-x[0].pos)*250
+                $("#enemytr").append("<td class='enbox' align='center' width='290px'><table width='90%'  style='margin-top:"+po+"%'><tr><td  class='ents'></td></tr>" +
+                    "<tr><td style='background: url("+ph+");width: 128px;height: 128px;position: relative'><div class='enrd'></div><div class='enbuff'></div></td><td align='center'  rowspan='2'><div class='ubc'><div class='enub1'></div><div class='enub2'></div></div></td></tr>" +
+                    "<tr><td style='position: relative'  height='24px'><div class='enhp1'></div><div class='enhp2'></div></td></tr></table></td>")
+            }
+
+        }
+
+        function batadd(x) {
+            for (var i=x.length-1;i>-1;i--)
+            {
+                battle.push(f(x[i],5,100))
+
+                var bt="img/pt/"+x[i].id+"11.webp"
+                $("#batteam").append("<td  align='center'><table width='66%'><tr><td class='batts'><div class='ents1'></div><div class='ents1'></div><div class='ents1'></div><div class='ents1'></div></td></tr</tr></table>" +
+                    "<table width='185px' class='batbox'><tr><td height='12px'></tr><tr><td width='15px'></td><td class='batrw' ><div class='batbuff' style='background-image: url(img/ico/buff/sls.png)'></div><div class='batpt' style='background: url("+bt+") no-repeat center/90.5%;'></div><div class='bard'></div></td><td align='right'  rowspan='2'><div class='ubc'><div class='batub1'></div><div class='batub2'></div></div></td><td width='12px'></td></tr>" +
+                    "<tr><td width='15px'></td><td  style='position: relative' height='24px'><div class='bathp1'></div><div class='bathp2'></div></td></tr><tr><td height='6px'></tr></table>" +
+                    "<div class='batsk layui-row'><div class='skico'></div><div class='skico'></div><div class='skico'></div><div class='skico'></div></div></td>")
+            }
+
+        }
+
+
+
 
         function f(g,star,lvl) {
-            var data=new Array({ "name" :g.name , "id":g.id,"star":star,"lvl":lvl,"atk":0,"def":0,"atk2":0,"def2":0,"sp":0,"hb":0,"hp":0 })
+            var data={ "name" :g.name , "id":g.id,"star":star,"lvl":lvl,"atk":0,"def":0,"atk2":0,"def2":0,"sp":0,"hb":0,"hp":0 ,"hpx":0,"mp":g.mp,"mpx":0,"mph":g.mph }
             data.atk=attk(g.atk,lvl,star)
             data.atk2=attk(g.stk,lvl,star)
-            data.def= 1-100/(def(g.def,lvl,star)+100)
-            data.def2=1-100/(def(g.sef,lvl,star)+100)
+            data.def= def(g.def,lvl,star)
+            data.def2=def(g.sef,lvl,star)
             data.sp=spe(g.spe,lvl,star,true)
-            data.hb=1-100/(spe(g.spe,lvl,star,false)+100)
+            data.hb=spe(g.spe,lvl,star,false)
             data.hp=hp(g.hp,lvl,star)
             return data
         }
 
     })
 
-    
+
 
 
     function attk(n,l,s) {
@@ -155,3 +254,4 @@
 
 </script>
 </html>
+

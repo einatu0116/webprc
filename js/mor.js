@@ -478,8 +478,9 @@ layui.use(['layer','jquery'], function(){
         rstar=new Array()
         for(var i=0;i<x;i++)
         {var star= Math.random()
-            //
+            //Math.random()
             star=star==0?1:Math.floor((Math.log10(star*Math.pow(3.5,3))/Math.log10(3.5)))+1
+
             i==9?star=star>=3?2:star<=0?1:star:star=star<=0?1:star;
             rstar.push(4-star)
             star=null
@@ -499,8 +500,9 @@ layui.use(['layer','jquery'], function(){
                 case 3:  gas= star3;break;
             }
             var s1=(Math.sqrt(t1)*Math.sin(t1))/Math.log(t1);
-            s1=s1-5+i
+            s1-=s1*Math.cos((i+1)*4)
             var sw=Math.pow(8,Math.round(s1).toString().length)
+            sw+=sw*Math.tan((i+1)*4)
             rcard.push(JSON.parse(JSON.stringify(gas[Math.round(Math.abs(s1+s1*(sw%10*i)%sw))%gas.length])))
             gas=null;s1=null;sw=null
         }

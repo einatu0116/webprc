@@ -177,7 +177,7 @@
 #shade{background-color: rgba(0,0,0,0.3);position: fixed;width: 100%;height: 100%;top: 0;z-index: 105}
 #menu{background: url(../img/menu.png);width: 1290px;height: 113px;background-size: 100%;position: absolute;bottom: 0;left: 50%;transform: translate(-50%, -10%)}
 /*队伍编制*/
-#box{background: url(../img/box.png);width: 1296px;height: 690px;background-size: 100%}
+#box{background: url(../img/box.png);width: 1296px;height: 690px;background-size: 100% }
 .borgold{background: url(../img/borgold.png);width: 126px;height: 126px;margin: 18px 9px;background-size: 100%}
 .pt1{width: 126px;height: 126px;background: no-repeat center/89.8%;cursor:pointer}
 .pt2{width: 126px;height: 126px;background: no-repeat center/89.8%;-webkit-animation:mzs 2s ease 1.5s infinite  alternate }
